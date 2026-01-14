@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Portal - Value Education (English Support)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; }
+        .card-disabled { opacity: 0.6; cursor: not-allowed; grayscale: 100%; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; border-radius: 8px; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        @media print {
+            .no-print { display: none; }
+            .print-area { display: block !important; width: 100%; }
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- NAVIGATION MENU -->
+    <nav class="bg-indigo-900 text-white shadow-md sticky top-0 z-50 no-print">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center py-3">
+                <div class="font-bold text-xl mb-2 md:mb-0">EduSupport Karnataka</div>
+                <div class="flex flex-wrap justify-center gap-4 text-sm font-medium">
+                    <button onclick="showPage('subjects')" class="hover:text-yellow-400">Subjects</button>
+                    <button onclick="showPage('content')" class="hover:text-yellow-400">Content</button>
+                    <button onclick="showPage('handbook')" class="hover:text-yellow-400">Teacher Handbook</button>
+                    <button onclick="showPage('assessment')" class="hover:text-yellow-400">Assessment & Coverage</button>
+                    <div class="border-l border-indigo-700 pl-4 flex gap-2">
+                        <span class="text-yellow-400">English</span> | <span>ಕನ್ನಡ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="max-w-6xl mx-auto px-4 py-8">
+
+        <!-- PAGE: SUBJECTS -->
+        <div id="page-subjects" class="page-content">
+            <h1 class="text-2xl font-bold mb-6 border-b-2 border-indigo-900 pb-2">Select Subject</h1>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- English - Active -->
+                <div onclick="showPage('class-listing')" class="bg-white border-2 border-indigo-200 p-6 rounded-xl shadow-sm hover:shadow-md cursor-pointer transition-all border-l-8 border-l-indigo-600">
+                    <h2 class="text-xl font-bold text-indigo-900">English</h2>
+                    <p class="text-sm text-slate-600 mt-2">Value Education & LSRW Skills (Std I-V)</p>
+                    <span class="inline-block mt-4 text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Active</span>
+                </div>
+                <!-- Others - Disabled -->
+                <div class="card-disabled bg-white border border-slate-200 p-6 rounded-xl shadow-sm">
+                    <h2 class="text-xl font-bold text-slate-400">Mathematics</h2>
+                    <p class="text-sm mt-2">Coming Soon</p>
+                </div>
+                <div class="card-disabled bg-white border border-slate-200 p-6 rounded-xl shadow-sm">
+                    <h2 class="text-xl font-bold text-slate-400">EVS</h2>
+                    <p class="text-sm mt-2">Coming Soon</p>
+                </div>
+                <div class="card-disabled bg-white border border-slate-200 p-6 rounded-xl shadow-sm">
+                    <h2 class="text-xl font-bold text-slate-400">Science</h2>
+                    <p class="text-sm mt-2">Coming Soon</p>
+                </div>
+                <div class="card-disabled bg-white border border-slate-200 p-6 rounded-xl shadow-sm">
+                    <h2 class="text-xl font-bold text-slate-400">Kannada</h2>
+                    <p class="text-sm mt-2">Coming Soon</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE: CONTENT EXPLAINER -->
+        <div id="page-content" class="page-content hidden">
+            <h1 class="text-2xl font-bold mb-6">How Content is Organised</h1>
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200 space-y-4">
+                <section>
+                    <h3 class="font-bold text-indigo-800">Class-wise structure (Class 1–5)</h3>
+                    <p class="text-sm">Content is tailored specifically for the cognitive levels of primary students in Government Schools.</p>
+                </section>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="p-4 bg-slate-50 rounded border border-slate-100">
+                        <h4 class="font-bold text-sm">Part A: Core Lessons</h4>
+                        <p class="text-xs">Teacher-led moral stories and discussions to build values.</p>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded border border-slate-100">
+                        <h4 class="font-bold text-sm">Part B: Practice & Worksheets</h4>
+                        <p class="text-xs">Simple activities to reinforce Listening, Speaking, Reading, and Writing.</p>
+                    </div>
+                </div>
+                <section>
+                    <h3 class="font-bold text-indigo-800">Pedagogy & Support</h3>
+                    <ul class="list-disc ml-5 text-sm space-y-2 mt-2">
+                        <li><strong>Kannada + English Support:</strong> Teachers are encouraged to code-mix (use both languages) to ensure student understanding.</li>
+                        <li><strong>Teacher-led:</strong> The teacher is the primary facilitator; technology is a support tool.</li>
+                        <li><strong>Low-bandwidth Friendly:</strong> Text-heavy design with optional video links for areas with limited internet.</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+        <!-- PAGE: CLASS LISTING (ENGLISH HOME) -->
+        <div id="page-class-listing" class="page-content hidden">
+            <h1 class="text-2xl font-bold mb-6">English (Value Education) - Select Class</h1>
+            <div class="space-y-4">
+                <button onclick="renderStandard(1)" class="w-full text-left p-4 bg-white border border-slate-200 rounded-lg hover:bg-indigo-50 flex justify-between items-center transition-colors">
+                    <div>
+                        <span class="font-bold">Class 1</span>
+                        <p class="text-xs text-slate-500">Focus: Exposure-based learning</p>
+                    </div>
+                    <span class="text-indigo-600">View Topics →</span>
+                </button>
+                <button onclick="renderStandard(2)" class="w-full text-left p-4 bg-white border border-slate-200 rounded-lg hover:bg-indigo-50 flex justify-between items-center transition-colors">
+                    <div>
+                        <span class="font-bold">Class 2</span>
+                        <p class="text-xs text-slate-500">Focus: Listening & Speaking</p>
+                    </div>
+                    <span class="text-indigo-600">View Topics →</span>
+                </button>
+                <button onclick="renderStandard(3)" class="w-full text-left p-4 bg-white border border-slate-200 rounded-lg hover:bg-indigo-50 flex justify-between items-center transition-colors">
+                    <div>
+                        <span class="font-bold">Class 3</span>
+                        <p class="text-xs text-slate-500">Focus: Reading & Structure</p>
+                    </div>
+                    <span class="text-indigo-600">View Topics →</span>
+                </button>
+                <button onclick="renderStandard(4)" class="w-full text-left p-4 bg-white border border-slate-200 rounded-lg hover:bg-indigo-50 flex justify-between items-center transition-colors">
+                    <div>
+                        <span class="font-bold">Class 4</span>
+                        <p class="text-xs text-slate-500">Focus: Comprehension</p>
+                    </div>
+                    <span class="text-indigo-600">View Topics →</span>
+                </button>
+                <button onclick="renderStandard(5)" class="w-full text-left p-4 bg-white border border-slate-200 rounded-lg hover:bg-indigo-50 flex justify-between items-center transition-colors">
+                    <div>
+                        <span class="font-bold">Class 5</span>
+                        <p class="text-xs text-slate-500">Focus: Formal Learning</p>
+                    </div>
+                    <span class="text-indigo-600">View Topics →</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- DYNAMIC PAGE: STANDARD VIEW -->
+        <div id="page-standard-view" class="page-content hidden">
+            <div id="standard-content"></div>
+        </div>
+
+        <!-- DYNAMIC PAGE: TOPIC DETAIL -->
+        <div id="page-topic-detail" class="page-content hidden">
+            <button onclick="goBackToStandard()" class="mb-4 text-sm text-indigo-700 font-medium no-print">← Back to Topics</button>
+            <div id="topic-content" class="print-area"></div>
+        </div>
+
+        <!-- PLACEHOLDER PAGES -->
+        <div id="page-handbook" class="page-content hidden">
+            <h1 class="text-2xl font-bold">Teacher Handbook</h1>
+            <p class="mt-4 text-slate-600">Core guidelines for implementing Value Education in Karnataka primary schools.</p>
+        </div>
+        <div id="page-assessment" class="page-content hidden">
+            <h1 class="text-2xl font-bold">Assessment & Coverage</h1>
+            <p class="mt-4 text-slate-600">Tracking progress and oral assessment checklist for Std I-V.</p>
+        </div>
+
+    </main>
+
+    <footer class="bg-slate-100 border-t border-slate-200 py-6 mt-12 no-print">
+        <div class="max-w-6xl mx-auto px-4 text-center text-xs text-slate-500">
+            <p>Government of Karnataka - Educational Resources</p>
+            <p class="mt-1">For teacher use only. Low-bandwidth optimized.</p>
+        </div>
+    </footer>
+
+    <script>
+        // CURRICULUM DATA
+        const curriculum = {
+            1: {
+                purpose: "Exposure-based learning to build comfort with English sounds through basic values.",
+                nature: "Exposure-based",
+                topics: [
+                    { title: "Love towards parents", url: "https://www.youtube.com/watch?v=KM0fgVudmKM" },
+                    { title: "Cleanliness", url: "https://www.youtube.com/watch?v=sed29xY62vE" },
+                    { title: "Respect for elders", url: "https://www.youtube.com/watch?v=D4JVS-uYYaM" },
+                    { title: "Friendship", url: "https://www.youtube.com/watch?v=a-R4xBXs1A0" },
+                    { title: "Truthfulness", url: "https://www.youtube.com/watch?v=IilpqlA8x8Q" },
+                    { title: "Politeness", url: "https://www.youtube.com/watch?v=XpcM-vE_swg" },
+                    { title: "Devotion to God", url: "https://www.youtube.com/watch?v=HBZvU4oy_8k" },
+                    { title: "Simplicity", url: "https://www.youtube.com/watch?v=qchsLWTWCD4" },
+                    { title: "Environment (Love for nature)", url: "https://www.youtube.com/watch?v=WTZY7-hrVvY" },
+                    { title: "Not hurting others", url: "https://www.youtube.com/watch?v=lWoy3R90kLg" }
+                ]
+            },
+            2: {
+                purpose: "Developing listening and initial speaking skills through family and social ethics.",
+                nature: "Listening & Speaking",
+                topics: [
+                    { title: "Love for brothers & sisters", url: "https://www.youtube.com/watch?v=e74svGNF88I" },
+                    { title: "Love for animals (Pets)", url: "https://www.youtube.com/watch?v=rgMRPqGa8aQ" },
+                    { title: "Taking care of your belongings", url: "https://www.youtube.com/watch?v=Px7tMlOck2k" },
+                    { title: "Punctuality", url: "https://www.youtube.com/watch?v=PsUrZUz7esk" },
+                    { title: "Obedience", url: "https://www.youtube.com/watch?v=K2-Mha47GVs" }
+                ]
+            },
+            3: {
+                purpose: "Focusing on simple reading and sentence structure using character-building themes.",
+                nature: "Reading & Structure",
+                topics: [
+                    { title: "Friendship", url: "https://www.youtube.com/watch?v=kKnUroixuNs" },
+                    { title: "Punctuality", url: "https://www.youtube.com/watch?v=_TFFfW8A4eg" },
+                    { title: "Being happy", url: "https://www.youtube.com/watch?v=ufbOHl1mmYk" },
+                    { title: "Using beautiful language", url: "https://www.youtube.com/watch?v=IaGEZ1YcCXo" },
+                    { title: "Sincerity (Whatever you do, do it well)", url: "https://www.youtube.com/watch?v=hTWv2jh-QFY" }
+                ]
+            },
+            4: {
+                purpose: "Enhancing comprehension skills and understanding moral consequences.",
+                nature: "Comprehension",
+                topics: [
+                    { title: "Commitment to learning", url: "https://www.youtube.com/watch?v=W3c0w_IbGfE" },
+                    { title: "Empathy", url: "https://www.youtube.com/watch?v=27sho6s2eK8" },
+                    { title: "Sacrifice", url: "https://www.youtube.com/watch?v=yhuL3i9cmpk" },
+                    { title: "Truthfulness", url: "https://www.youtube.com/watch?v=M56dxQZORbY" },
+                    { title: "Self-control", url: "https://www.youtube.com/watch?v=0AFRnZEkqq4" }
+                ]
+            },
+            5: {
+                purpose: "Transitioning to formal English language usage through complex life values.",
+                nature: "Formal learning",
+                topics: [
+                    { title: "Controlling anger", url: "https://www.youtube.com/watch?v=nMfcuu00jro" },
+                    { title: "Desire to learn", url: "https://www.youtube.com/watch?v=tWJ0k_UJswU" },
+                    { title: "Courage", url: "https://www.youtube.com/watch?v=fODUMKvJ5nI" },
+                    { title: "Punctuality", url: "https://www.youtube.com/watch?v=FRPx4RMN6ts" },
+                    { title: "Determination", url: "https://www.youtube.com/watch?v=nhOMTDpwSWw" }
+                ]
+            }
+        };
+
+        let currentStandard = null;
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
+            document.getElementById('page-' + pageId).classList.remove('hidden');
+            window.scrollTo(0,0);
+        }
+
+        function renderStandard(stdNum) {
+            currentStandard = stdNum;
+            const data = curriculum[stdNum];
+            const container = document.getElementById('standard-content');
+            
+            let html = `
+                <button onclick="showPage('class-listing')" class="mb-4 text-sm text-indigo-700 font-medium no-print">← Back to All Classes</button>
+                <div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100 mb-8">
+                    <h1 class="text-3xl font-bold text-indigo-900">Class ${stdNum} Overview</h1>
+                    <div class="mt-4 space-y-3">
+                        <p><strong>Purpose:</strong> ${data.purpose}</p>
+                        <p><strong>Skills Focus:</strong> Listening, Speaking, Reading, Writing (LSRW)</p>
+                        <p><strong>Nature of Learning:</strong> ${data.nature}</p>
+                        <p><strong>Teacher Role:</strong> Primary facilitator. Use Kannada to explain English concepts where needed (code-mixing encouraged).</p>
+                    </div>
+                </div>
+                <h2 class="text-xl font-bold mb-4">Topic Listing</h2>
+                <div class="grid gap-3">
+            `;
+
+            data.topics.forEach((topic, index) => {
+                html += `
+                    <button onclick="renderTopic(${index})" class="w-full text-left p-4 bg-white border border-slate-200 rounded-lg hover:border-indigo-400 transition-colors shadow-sm font-medium">
+                        ${topic.title}
+                    </button>
+                `;
+            });
+
+            html += `</div>`;
+            container.innerHTML = html;
+            showPage('standard-view');
+        }
+
+        function renderTopic(topicIndex) {
+            const stdData = curriculum[currentStandard];
+            const topic = stdData.topics[topicIndex];
+            const container = document.getElementById('topic-content');
+
+            // Generate Video ID for embedding (simple extract)
+            const videoId = topic.url.split('v=')[1];
+
+            container.innerHTML = `
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-md border border-slate-200">
+                    <div class="flex justify-between items-start mb-6">
+                        <h1 class="text-3xl font-bold text-indigo-900">${topic.title}</h1>
+                        <button onclick="window.print()" class="no-print bg-slate-100 text-slate-700 px-3 py-1 rounded text-xs border border-slate-300 font-bold">Print Page</button>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <section>
+                                <h3 class="text-lg font-bold border-l-4 border-indigo-600 pl-2 mb-2">Learning Objective</h3>
+                                <p class="text-sm italic">Students will understand the importance of ${topic.title.toLowerCase()} in their daily lives and practice simple English related to it.</p>
+                            </section>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="p-3 bg-slate-50 rounded border border-slate-100">
+                                    <h4 class="font-bold text-xs uppercase text-slate-500">Listening</h4>
+                                    <ul class="text-sm list-disc ml-4 mt-1"><li>Listen to the teacher's story.</li><li>Identify keywords.</li></ul>
+                                </div>
+                                <div class="p-3 bg-slate-50 rounded border border-slate-100">
+                                    <h4 class="font-bold text-xs uppercase text-slate-500">Speaking</h4>
+                                    <ul class="text-sm list-disc ml-4 mt-1"><li>Answer simple questions.</li><li>Repeat key phrases.</li></ul>
+                                </div>
+                                <div class="p-3 bg-slate-50 rounded border border-slate-100">
+                                    <h4 class="font-bold text-xs uppercase text-slate-500">Reading</h4>
+                                    <ul class="text-sm list-disc ml-4 mt-1"><li>Read topic heading.</li><li>Recognize new words.</li></ul>
+                                </div>
+                                <div class="p-3 bg-slate-50 rounded border border-slate-100">
+                                    <h4 class="font-bold text-xs uppercase text-slate-500">Writing</h4>
+                                    <ul class="text-sm list-disc ml-4 mt-1"><li>Trace the title.</li><li>Draw a small picture.</li></ul>
+                                </div>
+                            </div>
+
+                            <section class="bg-indigo-50 p-4 rounded-lg">
+                                <h3 class="text-lg font-bold text-indigo-900 mb-2">Teacher Explanation</h3>
+                                <div class="text-sm space-y-2">
+                                    <p>Today we will learn about ${topic.title}. It is very important for all of us.</p>
+                                    <p>Teacher should tell a short story about this value in simple English.</p>
+                                    <p>Explain the meaning in Kannada if students find English difficult.</p>
+                                    <p>Ask children to share their own experiences about ${topic.title.toLowerCase()}.</p>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div class="space-y-6">
+                            <section>
+                                <h3 class="text-lg font-bold mb-2">Classroom Questions (Oral)</h3>
+                                <ol class="list-decimal ml-5 text-sm space-y-2">
+                                    <li>What did you see in the story?</li>
+                                    <li>Why is ${topic.title} important for us?</li>
+                                    <li>Can you show me an example of this?</li>
+                                </ol>
+                            </section>
+
+                            <section>
+                                <h3 class="text-lg font-bold mb-2">Classroom Activity</h3>
+                                <div class="p-4 border-2 border-dashed border-slate-300 rounded-lg text-sm bg-yellow-50">
+                                    <strong>Role Play:</strong> Teacher invites two students to act out a simple scene demonstrating ${topic.title}. Others clap and repeat the value name.
+                                </div>
+                            </section>
+
+                            <section class="no-print">
+                                <h3 class="text-lg font-bold mb-2">Video Resource</h3>
+                                <div class="video-container mb-2">
+                                    <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                                <p class="text-[10px] text-slate-500 italic mb-2">“If video does not play, teacher may skip and continue lesson orally.”</p>
+                                <a href="${topic.url}" target="_blank" class="text-xs text-indigo-600 underline break-all">${topic.url}</a>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            `;
+            showPage('topic-detail');
+        }
+
+        function goBackToStandard() {
+            showPage('standard-view');
+        }
+
+        // Initialize view
+        window.onload = () => showPage('subjects');
+    </script>
+</body>
+</html>
